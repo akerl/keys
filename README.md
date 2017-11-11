@@ -1,6 +1,8 @@
 akerl/keys
 ============
 
+[![Build Status](https://img.shields.io/circleci/project/akerl/keys/master.svg)](https://circleci.com/gh/akerl/keys)
+
 My pubkeys for various devices
 
 ## Usage
