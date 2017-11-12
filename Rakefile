@@ -1,6 +1,5 @@
 require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
-require 'link_checker'
 
 desc 'Run tests'
 RSpec::Core::RakeTask.new(:spec)
