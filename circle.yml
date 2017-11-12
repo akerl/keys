@@ -1,10 +1,14 @@
 machine:
   environment:
     BUCKET: akerl-keys
+dependencies:
+  override:
+  - rvm-exec $(cat .circle-ruby) gem update --system --no-doc
+  - rvm-exec $(cat .circle-ruby) bundle install
 test:
   override:
-  - find -L all -type f | xargs -n1 ssh-keygen -l -f
-  - ./build.sh
+  - find -L classes -type f | xargs -n1 ssh-keygen -l -f
+  - rvm-exec $(cat .circle-ruby) bundle exec rake
 deployment:
   release:
     branch: master

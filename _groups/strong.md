@@ -1,0 +1,5 @@
+---
+ssh_keys:
+  bean: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAbBCujlI224Zhg6Y7g8RdMmm4nUVEoxM9V/IRb2M73k'
+  mazer: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPGU2CVRS/YH/bwl1izq/hoZxLN0DgFUFcyOs5AC+74I'
+---

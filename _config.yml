@@ -1,0 +1,21 @@
+---
+destination: _build
+exclude:
+- README.md
+- LICENSE
+- Gemfile
+- Gemfile.lock
+- circle.yml
+- Rakefile
+- vendor
+collections:
+  groups:
+    output: true
+    permalink: group/:title
+defaults:
+- scope:
+    type: groups
+  values:
+    layout: list
+url: 'https://github.com/akerl/keys'
+...
