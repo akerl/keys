@@ -7,7 +7,6 @@ dependencies:
   - rvm-exec $(cat .circle-ruby) bundle install
 test:
   override:
-  - find -L classes -type f | xargs -n1 ssh-keygen -l -f
   - rvm-exec $(cat .circle-ruby) bundle exec rake
 deployment:
   release:
