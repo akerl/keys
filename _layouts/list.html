@@ -2,8 +2,4 @@
 # Generated from {{ site.url }}
 {% endif -%}
 # {{ site.time }}
-
-{% for key in page.ssh_keys -%}
-{{ key[1] }} {{ key[0] }}
-{% endfor -%}
-
+{% include keys.html group=page -%}
