@@ -1,0 +1,11 @@
+---
+layout: default
+title: "akerl's public keys"
+---
+<h2>Public key repo</h2>
+<p>This hosts the public keys defined at https://github.com/akerl/keys</p>
+<ul>
+{% for group in site.groups -%}
+    <li><a href="groups/{{ group.slug }}">{{ group.slug }}</a></li>
+{% endfor -%}
+</ul>
