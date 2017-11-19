@@ -16,5 +16,6 @@ defaults:
     type: groups
   values:
     layout: list
-url: 'https://github.com/akerl/keys'
+repo_url: 'https://github.com/akerl/keys'
+host_url: 'https://id-ed25519.pub'
 ...

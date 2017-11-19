@@ -15,8 +15,9 @@ desc 'Build the site'
 task :build do
   fail unless system 'jekyll build'
   Dir.glob('_build/groups/*.html').each do |old|
-    new = old.sub('.html', '')
-    FileUtils.mv old, new
+    base = old.sub('.html', '')
+    FileUtils.mv old, base
+    FileUtils.cp base, base + '.txt'
   end
 end
 
