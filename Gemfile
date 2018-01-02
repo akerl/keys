@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'jekyll', '~> 3.6.0'
+gem 'jekyll', '~> 3.7.0'
 
 group :development do
   gem 'rubocop', '~> 0.52.0'
