@@ -1,7 +1,6 @@
 akerl/keys
 ============
 
-[![Dependency Status](https://img.shields.io/gemnasium/akerl/keys.svg)](https://gemnasium.com/akerl/keys)
 [![Build Status](https://img.shields.io/circleci/project/akerl/keys/master.svg)](https://circleci.com/gh/akerl/keys)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
 
