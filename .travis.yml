@@ -1,0 +1,19 @@
+dist: trusty
+env:
+  global:
+  - BUCKET=akerl-keys
+install:
+- rvm install $(cat .circle-ruby)
+- rvm-exec $(cat .circle-ruby) bundle install
+script: rvm-exec $(cat .circle-ruby) bundle exec rake
+deploy:
+  provider: script
+  script:
+  - aws s3 sync --delete _build/ s3://$BUCKET/ || travis_terminate 1
+  skip_cleanup: true
+  on:
+    branch: master
+notifications:
+  email: false
+  slack:
+    secure: CGgI/KYiXPoJ3g06ovppN7GfR1waz9pyb3YPvg0gVuc7/Rb3a6o5X8++ruI1/xx7vtmOkxbbk+m2ZTDMIhHGNP7IPUhP4VmJizJLu9rVEuWHuDwSKABnPQ5wjjmBGJj8bkHJHARcPiPE6P5ZOd4wyJZsMXbXEp91NfJnu2iHjVf19aR/kL70iJG0/xaprCSnyQwiLoLQBSz9J4IuEFHbzBLXRKq2RhpAZUOxnZBypbryn0f5biEjZHA410vExhuO4ISaMJYcgr93pOacJmIiuiL4r7dxhT+0UxOrBKzUXMPHzmGwgzac3kj/bG7KkPxy/e2ypkZnhoVHvrr+J49OWAkm3PzorATiyvR5hIvricq0+lcdMYzsoLixfWWSV/9jZQKVugwiWpfcXUAFfAu4S0XZkJrS5BVhDpH6AnsbXC7FSgQD1ftwHRRu+dmMG4nmaXjbZG0SnAWlifKuWtJXW7eXrgr5l0tSKnhzQDNx3Rasyw0cOmvwlYm4QtQqdYCgc2kth9vlEkfceuHoomkKFR8EteBJUwnXDMQoDkm2mjOkym7rBcmG+hdZlc/8yzzkSSc8m85p51nAucIYP+tgfYNEPqLjtgUxlVnUUggxnK6vNsB92WMSHriJ7Wf42Tu7T+i46gmObUgCwm57y3HQNwyrRoKdXyWUa0jTxDstoDE=
