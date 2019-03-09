@@ -7,13 +7,12 @@ RSpec::Core::RakeTask.new(:spec)
 
 desc 'Run Rubocop on the code'
 RuboCop::RakeTask.new(:rubocop) do |task|
-  task.patterns = ['spec/**/*.rb']
   task.fail_on_error = true
 end
 
 desc 'Build the site'
 task :build do
-  fail unless system 'jekyll build'
+  raise unless system 'jekyll build'
   Dir.glob('_build/groups/*.html').each do |old|
     base = old.sub('.html', '')
     FileUtils.mv old, base
@@ -21,4 +20,4 @@ task :build do
   end
 end
 
-task default: [:spec, :rubocop, :build]
+task default: %i[spec rubocop build]
