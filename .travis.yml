@@ -13,8 +13,7 @@ install:
 script: rvm-exec $(cat .circle-ruby) bundle exec rake
 deploy:
   provider: script
-  script:
-  - aws s3 sync --delete _build/ s3://$BUCKET/ || travis_terminate 1
+  script: aws s3 sync --delete _build/ s3://$BUCKET/ || travis_terminate 1
   skip_cleanup: true
   on:
     branch: master
