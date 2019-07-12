@@ -96,7 +96,7 @@ PLATFORMS
 
 DEPENDENCIES
   fuubar (~> 2.4.1)
-  goodcop (~> 0.7.0)
+  goodcop (~> 0.7.1)
   jekyll (~> 3.8.0)
   rake (~> 12.3.0)
   rspec (~> 3.8.0)
