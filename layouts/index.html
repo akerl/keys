@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Key groups</title>
+    </head>
+    <body>
+        <div class="content">
+            <h2>Key groups</h2>
+            <ul>
+                {{ with .Site.GetPage "section" "groups" }}{{ range .Pages }}
+                <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                {{ end }}{{ end }}
+            </ul>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,8 @@
+BaseURL: https://id-ed25519.pub
+Params:
+  RepoURL: https://github.com/akerl/keys
+disableKinds:
+  - sitemap
+  - RSS
+  - taxonomyTerm
+  - section
