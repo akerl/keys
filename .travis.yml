@@ -5,15 +5,15 @@ env:
   - BUCKET=akerl-keys
   - secure: V29GHu6pUnOCAFK7M1C1z1nOeRmgV1BG0K+5j1yS0qzIC8nl7wSlkvye7XypWzJklaYETcl6i00qwwQ3IyC3cvv2aVZ+bA4Lkx2JGXsSL6/qJ+E9NWRF7UEFVmzqAluXUcXAJ2lqEoJkn8ij3UT4pBSJph+vwm/wHCL0xjIYAxsRRJvL7lFTHfN+ZfQCiUQSueKnAv1S6QGzE7e6CV2YMuOBOcx6tkUYTtXa05YWgQM5TGR8A5D+fZm8QRMyJf0g9sXo/SACqoSQeCMn4ydHhGwtq3+cLMMryYFPvTU/qBvEU+2gSM/MohIMQSjahcEuAKYbiEGqm3+hhJ41el0bJmevHIvSN1Y+hji0EddZ1SZ5EzL+wv+5jtuNuxsHgMPHhXFYkv3qkB4sENlOlo5UjPFOW8d7lCsgdZZ0kE1ycu9wzmqDgZ0J1TlF3jSsSnMZ5VFm4428QMsUGRpQAbC2bYRnpJDfScE65Z7FrzPMRNZeocg+0CjRleVRSyuPT4xzG+O4l+aBjGIur7XZgh4Ma8oRK7cPj9MytG3bpWNxVEWBRTPyZ89edpg7Xua6pCyB56Oo9wwA6zuaBVs+mmLsExGKV5uSxbnadXuSuXxkbVv0vZ0F55dQzScoaRPfa4BdXsgwMl6WsdzjIGzAox8lAPpuY72BhoSGOGU3tnVTblc=
   - secure: WKLaxCwMQ5ui3u0X5GY3k1rJO+PkmP1hV6XKFMBPjh8hLQScaOxGGWzGdfsMieICEPQ0/F8zPVuBbVuLc46NNLY8AkuIbgA0cw5dLESgHn1LiunwbtkfvsmBpmhgaNo+xuPjTLPmH0qO6+fITDQ/fZuhDk6I4nslgH2xLJn/w8HLYzT3F/WTHdexO1VMKao655UX1D6Ymjlnmvtvn/aSaaS3j2fhA+tcJAuTPK/opbNau6p3MGt+EZopKN4Cs+O0afMvGrdtQ+ZfNWR0/JVeqlStUyIA2mq9x10gTgrQaed+gZBJIxZRbsG5kg76NL/17HeaGAIqHGmXnnn9dQbSPHZLREdLoVz+2x+d3XGneLJGKfS9/Pv2LbNF/QDkwh5kG07rblatkAf3kiMWty5+O4898Ir2qQZcOLmmp7b7gTiKwgBQ41fV0UrhQV1U14P7bYj3rDYcqnG8PQc12CDah7zI+omlCHIwnw6VETIwmT/JqJdYIJgF8hilp89e3PL2I5+l8lh5kl5iJFPdUX1iETWflreUbX7FO/wWiaAmM49nhr2ggl0YLSo4gUtKH34v4V2j/d3doO3ZxZIEdaMxR3gUQLgF7+KsSNLncWqSa+ecV9Pax64DCELJzvoWey3oggKtAAz3T3gCMBnfUGQIuv43xrsJP/C8eH3G/j85y48=
-before_install:
-- pip install --user awscli
 install:
-- rvm install $(cat .circle-ruby)
-- rvm-exec $(cat .circle-ruby) bundle install
-script: rvm-exec $(cat .circle-ruby) bundle exec rake
+- mkdir ~/.hugo
+- curl -sLo ~/.hugo/source.tar.gz https://github.com/gohugoio/hugo/releases/download/v0.62.0/hugo_0.62.0_Linux-64bit.tar.gz
+- tar xf ~/.hugo/source.tar.gz -C ~/.hugo hugo
+- chmod a+x ~/.hugo/hugo
+script: ~/.hugo/hugo
 deploy:
   provider: script
-  script: aws s3 sync --delete _build/ s3://$BUCKET/
+  script: hugo deploy
   skip_cleanup: true
   on:
     branch: master

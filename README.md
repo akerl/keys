@@ -6,9 +6,4 @@ akerl/keys
 
 My pubkeys for various devices
 
-## Usage
-
-I generally install these via [key_sync](https://github.com/akerl/scripts/blob/master/key_sync).
-
-There is also [a Docker image](https://github.com/dock0/pubkeys) that serves all the keys here via a webserver
-
+These are published to [id-ed25519.pub](https://id-ed25519.pub).
